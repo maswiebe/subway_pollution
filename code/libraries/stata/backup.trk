@@ -1,0 +1,144 @@
+* 00000003
+*! version 1.0.0
+* Do not erase or edit this file
+* It is used by Stata to track the ado and help
+* files you have installed.
+
+S http://fmwww.bc.edu/repec/bocode/e
+N estout.pkg
+D 13 Feb 2024
+U 1
+d 'ESTOUT': module to make regression tables
+d 
+d  estout produces a table of regression results from one or
+d several models for use with spreadsheets, LaTeX, HTML, or a
+d word-processor table. eststo stores a quick copy of the active
+d estimation results for later tabulation. esttab is a wrapper for
+d estout. It displays a pretty looking publication-style regression
+d table without much typing. estadd adds additional results to the
+d e()-returns for one or several models previously fitted and
+d stored. This package subsumes the previously circulated esto,
+d esta, estadd,  and estadd_plus. An earlier version of estout is
+d available  as estout1.
+d 
+d KW: estimates
+d KW: LaTeX
+d KW: HTML
+d KW: word processor
+d KW: output
+d 
+d Requires: Stata version 8.2
+d 
+d Distribution-Date: 20230212
+d 
+d Author: Ben Jann, University of Bern
+d Support: email jann@@soz.unibe.ch
+d 
+f _/_eststo.ado
+f _/_eststo.hlp
+f e/estadd.ado
+f e/estadd.hlp
+f e/estout.ado
+f e/estout.hlp
+f e/eststo.ado
+f e/eststo.hlp
+f e/estpost.ado
+f e/estpost.hlp
+f e/esttab.ado
+f e/esttab.hlp
+e
+S http://fmwww.bc.edu/repec/bocode/b
+N boottest.pkg
+D 13 Feb 2024
+U 2
+d 'BOOTTEST': module to provide fast execution of the wild bootstrap with null imposed
+d 
+d  boottest is a post-estimation command that offers fast execution
+d of the wild bootstrap (Wu 1986) with null imposed, as recommended
+d by Cameron, Gelbach, and Miller (2008) for estimates with
+d clustered standard errors and few clusters. It also performs the
+d “score bootstrap” (Kline and Santos 2012), which adapts the
+d wild approach to Maximum Likelihood estimators. Two wrappers,
+d waldtest and scoretest, give easy access to the classical Wald
+d (1943) and Rao (1948) score/Lagrange multiplier tests. boottest
+d works after regress, cnsreg, ivreg, ivregress, ivreg2 and most
+d Stata ML-based estimation commands. boottest offers inference
+d based on multi-way clustering after many Stata estimation
+d commands that do not otherwise support it. When bootstrapping, it
+d offers a choice of Rademacher, Mammen (1993), Webb (2014), and
+d standard normal weights. boottest requires Stata version 11.2 or
+d later and runs fastest in version 13 or later.
+d 
+d KW: wild bootstrap
+d KW: Cameron
+d KW: Gelbach
+d KW: Miller
+d KW: score bootstrap
+d KW: Rao LM test
+d KW: multi-way clustering
+d 
+d Requires: Stata version 13
+d 
+d Distribution-Date: 20240130
+d 
+d Author: David Roodman
+d Support: email david@@davidroodman.com
+d 
+f b/boottest.ado
+f b/boottest.mata
+f b/boottest.sthlp
+f b/boottest_1.ado
+f a/artest.ado
+f s/scoretest.ado
+f w/waldtest.ado
+f l/lboottest.mlib
+e
+S http://fmwww.bc.edu/repec/bocode/m
+N mylabels.pkg
+D 14 Feb 2024
+U 3
+d 'MYLABELS': module for axis labels or ticks on transformed scales or for daily dates
+d 
+d  mylabels and myticks generate axis labels and ticks on
+d transformed scales. Their use is best explained by example. You
+d draw a graph and one axis is on a transformed square root scale.
+d You wish the axis labels to show untransformed values. For some
+d values this is easy; for example, ylabel(0 1 2 "4" 3 "9" 4 "16" 5
+d "25") says use "4" as label for 2, and so forth. For other values
+d and/or other transformations the conversion may be more difficult
+d to do in your head. The idea behind mylabels is that you feed it
+d the numeric labels you want shown and the transformation being
+d used. It will then place the appropriate specification in a local
+d macro which you name. You may then use that local macro as part
+d of a later graphics command. The idea behind myticks is similar.
+d  mydays displays a formatted list of specified days that lie
+d within the range of a tsset daily date variable describing a time
+d series and puts the numeric version of that list in a specified
+d local macro. The result may be useful for specifying axis label
+d or tick positions on graphs of time series. mydays requires Stata
+d 9.0.
+d 
+d KW: graphics
+d KW: transformations
+d KW: axis labels
+d KW: axis ticks
+d KW: daily dates
+d KW: time series
+d 
+d Requires: Stata version 8.0 (9.0 for mydays)
+d 
+d Distribution-Date: 20220515
+d 
+d Author: Nicholas J. Cox, Durham University
+d Support: email N.J.Cox@@durham.ac.uk
+d 
+d Author: Scott Merryman
+d Support: email scott.merryman@@gmail.com
+d 
+f m/mylabels.ado
+f m/mylabels.sthlp
+f m/myticks.ado
+f m/myticks.hlp
+f m/mydays.ado
+f m/mydays.hlp
+e
