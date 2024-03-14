@@ -1,10 +1,1 @@
-code/_install_stata_packages.do
-output/
-data/GendronCarrier_etal_2020_replication/data_proccessing/data/
-data/GendronCarrier_etal_2020_replication/data_proccessing/data_analysis/
-data/het_te.dta
-paper/
-readings/
-126401-V1.zip
-subway-pollution-notes.md
-replication_wiebe/
+subway-pollution_notes.md
