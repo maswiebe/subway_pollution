@@ -1,4 +1,4 @@
-This repository contains Stata .do files for my comment on "[Subways and Urban Air Pollution](https://www.aeaweb.org/articles?id=10.1257/pol.20190509)", Gendron-Carrier et al. (2022).
+This repository contains Stata .do files for my [comment](https://michaelwiebe.com/assets/subway_pollution/subway_pollution.pdf) on "[Subways and Urban Air Pollution](https://www.aeaweb.org/articles?id=10.1257/pol.20190509)", Gendron-Carrier et al. (2022).
 
 To combine my code with the data, first download this repository, then download the original [replication package](https://www.openicpsr.org/openicpsr/project/126401/version/V1/view) and extract the folders 'data/' and 'data_analysis/' to the directory 'data/GendronCarrier_etal_2020_replication/data_proccessing/'.
 This requires signing up for an ICPSR account.
