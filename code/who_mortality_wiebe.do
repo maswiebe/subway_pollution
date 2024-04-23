@@ -162,7 +162,10 @@ gen pm25 = _n-1;
 save temp/relativerisk, replace;
 
 * loop through csv files;
-local files : dir "${relrisks}" files "rr_*.csv";
+local files : dir "${relrisks}" files "RR_*.csv";
+**MW: `dir` is case-insensitive on Windows, but case-sensitive on Linux: change to "RR";
+**MW the second `files` is an option for the `dir` command: https://www.stata.com/manuals13/pmacro.pdf#pmacroRemarksandexamplesMacroextendedfunctionsforfilenamesandfilepaths;
+/* local files : dir "${relrisks}" files "rr_*.csv"; */
 foreach file in `files' {;
 
 	* string stubs;
@@ -180,7 +183,9 @@ foreach file in `files' {;
 	rename upperbound  `sub'_ub;
 
 	* linear interpolation for pm2.5 increments;
-	ds rr*;
+	ds RR*;
+	/* ds rr*; */
+	** MW: case-sensitive;
 	foreach vari in `r(varlist)' {;
 		gen `vari'_plus1 = `vari'[_n+1];
 		replace `vari'_plus1=`vari' if `vari'_plus1==.;
@@ -207,8 +212,6 @@ foreach file in `files' {;
 
 *save copy in generated;
 save ${generated}/RelativeRisks, replace; 
-* MW: this is just the list(1:125);
-* above loop is not doing anything;
 
 };
 
@@ -320,8 +323,7 @@ save temp/cities_pm25, replace;
 * STEP 4 : Burden of disease!    *
 **********************************/
 
-**MW: this code produces an error;
-/* if `step4' ==1 {;
+if `step4' ==1 {;
 
 * get isocode3 key for merge;
 import delimited "${deathrates}/iso3codes.txt", clear;
@@ -333,8 +335,9 @@ save temp/temp, replace;
 * prepare relative risks for merge;
 use temp/relativerisk, clear;
 drop *_lb *_ub;
-**MW: get error here: variable not found;
-ds rr*;
+ds RR*;
+/* ds rr*; */
+**MW: case-sensitive;
 foreach vari in `r(varlist)' {;
 	gen `vari'_pre = `vari';
 	gen `vari'_post = `vari';
@@ -372,7 +375,9 @@ foreach vari in `r(varlist)' {;
 };
 
 * fraction of deaths saved by subways for each cause-by-age (PAF);
-ds rr_*_pre;
+ds RR_*_pre;
+**MW: case-sensitive;
+/* ds rr_*_pre; */
 foreach vari in `r(varlist)' {;
 	local vari2 = substr("`vari'",1,strpos("`vari'","pre")-1);
 	local vari3 = substr("`vari'",3,strpos("`vari'","pre")-4);
@@ -436,7 +441,7 @@ keep year country urbanname urbancode city_pop pred_pm25_pre pred_pm25_post
 	 birthrate VSL;
 save avoided_deaths, replace;
 
-}; */
+};
 
 /**********************
 * STEP 5 : The end    *
