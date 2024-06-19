@@ -1,5 +1,5 @@
 * set path: uncomment the following line and set the filepath for the folder containing this run.do file
-*global root "[location of replication archive]"
+*global root_mw "[location of replication archive]"
 global data_mw "$root_mw/data"
 global code_mw "$root_mw/code"
 global tables_mw "$root_mw/output/tables"
